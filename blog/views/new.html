@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title %}New Post{% endblock %}
+
+{% block content %}
+ <meta charset="UTF-8">
+<!--中文字-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 手機格式-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.bcty365.com/jquery-1.8.3.min.js"></script>
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <a href="#" class="navbar-brand">NBA</a>
+        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse navHeaderCollapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li id="tabHome" class="tab"><a href="#home" onclick="switchPanel('Home')">Home</a></li>
+                <li id="tabcurry" class="tab"><a href="#" onclick="switchPanel('curry')">curry</a></li>
+                <li id="tabblog" class="tab"><a href="#" onclick="switchPanel('blog')">留言板</a></li>
+            </ul>
+            </ul>
+        </div>
+    </div>
+</div>
+  <h1>新增留言</h1>
+  
+  <form action="/post" method="post">
+    <p><input type="text" placeholder="標題" name="title"></p>
+    <p><textarea placeholder="內容" name="body"></textarea></p>
+    <p><input type="submit" value="留言"></p>
+  </form>
+<p><a href="./..">回首頁</a></p>
+{% endblock %}

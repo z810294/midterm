@@ -1,0 +1,137 @@
+{% extends 'layout.html' %} {% block title %}Blog{% endblock %} {% block content %}
+<meta charset="UTF-8">
+<!--中文字-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 手機格式-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.bcty365.com/jquery-1.8.3.min.js"></script>
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <a href="#" class="navbar-brand">NBA</a>
+        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse navHeaderCollapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li id="tabHome" class="tab"><a href="#home" onclick="switchPanel('Home')">Home</a></li>
+                <li id="tabcurry" class="tab"><a href="#" onclick="switchPanel('curry')">curry</a></li>
+                <li id="tabblog" class="tab"><a href="#" onclick="switchPanel('blog')">留言板</a></li>
+            </ul>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--上面為上面框架  下面為表格 -->
+<div id="panelHome" class="container panel">
+ 
+       
+            <div class="col-lg-4">
+                <img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/19090_1587636768158857_3887737690986010824_n.jpg?oh=c4f8251edcc77073ec7597ccf1491aa5&oe=55DA3F08&__gda__=1440847498_aaea7bcace77f6de87177ee8e8a3b334" alt="First slide">
+            </div>
+            <div class="col-lg-4">>
+                <img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xap1/v/t1.0-9/11203722_1587636758158858_7713739502029542308_n.jpg?oh=78003604dd256bc6c46c9b9cc7f8c09b&oe=55D116EE&__gda__=1440082135_14c3dc3d3776e98594d12683a5c35afd" alt="Second slide">
+            </div>
+            <div class="col-lg-4">>
+                <img src="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xat1/v/t1.0-9/11203051_1587636748158859_1469266788425879497_n.jpg?oh=b49f33cb50cbcaabc338e3cfec7bdc1d&oe=55C9B10F&__gda__=1440542215_bd657ab8e720d67c35e60bc6ae61f673" alt="Third slide">
+            </div>
+        </div>
+        
+    <!-- Home頁面的HTML-->
+
+<div id="panelcurry" class="container panel">
+    <div class="col-lg-4">
+        <img src="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/11188228_1587636714825529_5390103566087144920_n.jpg?oh=e3a4700b80892e4505fb0dcf86060fd0&oe=55D83659&__gda__=1440955187_f3db99632d4a4a1b015ac00d950caaf7" alt="Generic placeholder image" style="width: １40px; height: ３40px;">
+        <h2 p class="text-danger">stephen curry</p></h2>
+        <p><a class="btn btn-primary" href="http://zh.wikipedia.org/wiki/%E6%96%AF%E8%92%82%E8%8A%AC%C2%B7%E7%A7%91%E9%87%8C" role="button">維基百科 &raquo;</a></p>
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/vgKfrQZqeSQ" frameborder="0" allowfullscreen></iframe>
+    <style type="text/css">
+    table,
+    td,
+    th {
+        border: 1px solid black;
+        text-align: center;
+    }
+    
+    table {
+        width: 50%;
+    }
+    
+    th {
+        height: 100px;
+        border: 1px solid blue;
+    }
+    
+    td {
+        text-align: center;
+        border: 1px solid blue;
+    }
+    </style>
+    </head>
+
+    <body>
+        <table>
+            <tr>
+                <th>名字</th>
+                <th>curry</th>
+            </tr>
+            <tr>
+                <td>身高</td>
+                <td>190</td>
+            </tr>
+            <tr>
+                <td>體重</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>位置</td>
+                <td>後衛</td>
+            </tr>
+        </table>
+</div>
+<div id="panelblog" class="container panel">
+    <h1>留言板</h1>
+    <p>你有 <strong>{{ posts.length }}</strong> 留言!</p>
+    <p><a href="/post/new">新增留言</a></p>
+    <ul id="posts">
+        {% for post in posts %}
+        <li>
+            <h2>{{ post.title }}</h2>
+            <p><a href="/post/{{ post.id }}">檢視留言</a></p>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+<script type="text/javascript">
+function switchPanel(name) {
+    $(".panel").css("display", "none");
+    $("#panel" + name).css("display", "block");
+    $(".tab").removeClass("active");
+    $("#tab" + name).addClass("active");
+}
+
+$(document).ready(function() {
+    switchPanel('Home');
+});
+</script>
+
+
+<script type="text/javascript">
+function switchPanel(name) {
+    $(".panel").css("display", "none");
+    $("#panel" + name).css("display", "block");
+    $(".tab").removeClass("active");
+    $("#tab" + name).addClass("active");
+}
+
+$(document).ready(function() {
+    switchPanel('Home');
+});
+</script>
+{% endblock %}
